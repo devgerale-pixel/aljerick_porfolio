@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aljerick Louise Gerale | IT Professional</title>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables (Green Theme) --- */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #10b981;
+            /* Emerald Green 500 */
+            --primary-hover: #059669;
+            /* Emerald Green 600 */
+            --primary-light: #d1fae5;
+            /* Emerald Green 100 */
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #10b981;
+            --primary-hover: #34d399;
+            /* Lighter emerald for dark mode hover */
+            --primary-light: rgba(16, 185, 129, 0.15);
+            --border: #334155;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- Global & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color var(--transition), color var(--transition);
+            line-height: 1.6;
+        }
+
+        /* --- Layout & Typography --- */
+        section {
+            padding: 100px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Clean Reusable Card Class */
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        /* --- Desktop Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--surface-color);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active-link {
+            color: var(--primary);
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-actions button:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* --- Mobile Navigation Drawer --- */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--surface-color);
+            border-left: 1px solid var(--border);
+            z-index: 1001;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            line-height: 1;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-menu:hover {
+            color: var(--primary);
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .mobile-links a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.23);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            padding-top: 120px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .typing-container {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            min-height: 90px;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+            color: var(--primary);
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Decorative circle behind profile */
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-45%, -45%);
+            z-index: 0;
+        }
+
+        .profile-img {
+            width: 380px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid var(--surface-color);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03) rotate(-2deg);
+        }
+
+        /* --- Stats Container --- */
+        .stats-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .stat-box:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Experience Timeline --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 16px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 9px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--bg-color);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--primary-light);
+        }
+
+        .timeline-content {
+            padding: 1.8rem;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- Interactive Portfolio Section --- */
+        .filter-buttons {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            border-color: var(--text-main);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* --- Tech Stack / Tools Grid --- */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            padding: 2rem 1rem;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 16px;
+            cursor: default;
+        }
+
+        .tool-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover .tool-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .tool-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .tool-cat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-card {
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-origin: center;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, opacity 0.4s;
+        }
+
+        .project-card.hide {
+            display: none;
+        }
+
+        .project-card.animate-in {
+            animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: var(--border);
+        }
+
+        .project-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1.2rem;
+            background: var(--surface-color);
+        }
+
+        /* Interactive Overlay on Image */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(16, 185, 129, 0.9);
+            /* Emerald Overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-card:hover .overlay-text {
+            transform: translateY(0);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        /* Tech Stack Tags */
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary-light);
+            color: var(--primary-hover);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        [data-theme="dark"] .tag {
+            color: var(--primary);
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .email-box {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .email-box span {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface-color);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* --- Scroll Animations --- */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- UX Modal Design --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.75);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            max-width: 600px;
+            width: 90%;
+            background: var(--surface-color);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                transform: translateY(40px) scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header-img {
+            height: 200px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        #modal-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        #modal-tags {
+            margin-bottom: 1.5rem;
+        }
+
+        #modal-desc {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 1024px) {
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero {
+                gap: 2rem;
+            }
+
+            .typing-container {
+                font-size: 2.8rem;
+                min-height: 70px;
+            }
+
+            .profile-img,
+            .hero-image-container::before {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+                border: none;
+                background: none;
+                font-size: 1.8rem;
+                color: var(--text-main);
+                cursor: pointer;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .subtitle {
+                margin: 0 auto 2rem auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .section-title {
+                text-align: center;
+                display: block;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .email-box {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .typing-container {
+                font-size: 2.2rem;
+                min-height: 60px;
+            }
+
+            .profile-img,
+            .hero-image-container::before {
+                width: 260px;
+                height: 260px;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .timeline-item {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 8px;
+            }
+
+            .timeline-dot {
+                left: 1px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            nav,
+            .hamburger,
+            .mobile-menu,
+            .overlay,
+            .filter-buttons,
+            .hero-buttons,
+            #contact form,
+            .project-overlay {
+                display: none !important;
+            }
+
+            .card {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            section {
+                padding: 20px 0;
+                min-height: auto;
+                page-break-inside: avoid;
+                margin: 0;
+            }
+
+            .hero {
+                flex-direction: row;
+                padding-top: 0;
+                border-bottom: 2px solid black;
+                align-items: flex-start;
+            }
+
+            .hero-image-container::before {
+                display: none;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+
+            .project-img-wrapper {
+                display: none;
+            }
+
+            .section-animate {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu">&times;</button>
+        <div class="mobile-links">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">Overview</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#projects" class="mobile-link">Portfolio</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav id="navbar">
+        <div class="logo">ALJERICK LOUISE GERALE<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Overview</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" title="Toggle Dark Mode">🌙</button>
+            <button class="hamburger" id="hamburger">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section-animate">
+        <div class="hero-content">
+            <h3>Hello, I am</h3>
+            <h1 class="typing-container">
+                <span id="typing-text"></span><span class="cursor">|</span>
+            </h1>
+            <p class="subtitle">I am an IT student and aspiring Full-Stack Web, Mobile, and IoT Developer passionate
+                about creating modern, scalable, and user-centered digital solutions. I specialize in developing
+                responsive web applications, cross-platform mobile apps using Flutter, and intelligent IoT systems that
+                seamlessly connect software with embedded hardware.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Talk</a>
+                <button onclick="window.print()" class="btn btn-outline">View Résumé</button>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="profile.jpg" alt="Aljerick Louise Gerale" class="profile-img"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2QxZmFlNSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMTA4OTgxIiBmb250LWZhbWlseT0iSW50ZXIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiPlByb2ZpbGUgUGhvdG88L3RleHQ+PC9zdmc+'">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-animate">
+        <h2 class="section-title">Professional Overview</h2>
+        <div class="stats-container">
+            <div class="stat-box card">
+                <h3 class="counter" data-target="2">0</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-box card">
+                <h3 class="counter" data-target="7">0</h3>
+                <p>Projects</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="section-animate">
+        <h2 class="section-title">Career History</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <h3>Student IT Developer</h3>
+                    <h4>AquaBlue | 2026</h4>
+                    <p>An Aquaculture AN IOT-BASED AQUACULTURE MONITORING
+                        AND YIELD MANAGEMENT SYSTEM FOR TILAPIA FISHPOND.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <h3>IT DEVELOPER </h3>
+                    <h4>QR ATTENDANCE OF JIL MAPANDAN | 2026</h4>
+                    <p>An Web and Mobile Based System for QR Code Attendance Monitoring System.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content card">
+                    <h3>Cyber Security Participant</h3>
+                    <h4>University of Makati | 2025</h4>
+                    <p>RANK 10TH,Participant of Cyber Security Category in 14TH IT OLYMPICS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools That I Reach For Section -->
+    <section id="projects" class="section-animate">
+        <h2 class="section-title">Tools That I Reach For</h2>
+
+        <!-- Filter Controls -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Tools</button>
+            <button class="filter-btn" data-filter="language">Languages</button>
+            <button class="filter-btn" data-filter="framework">Frameworks</button>
+            <button class="filter-btn" data-filter="database">Databases</button>
+            <button class="filter-btn" data-filter="hardware">Hardware</button>
+            <button class="filter-btn" data-filter="tool">Dev Tools</button>
+        </div>
+
+        <div class="project-grid tools-grid" id="project-grid">
+
+            <!-- LANGUAGES -->
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">JavaScript</div>
+                <div class="tool-name">JavaScript</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">Python</div>
+                <div class="tool-name">Python</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">Dart</div>
+                <div class="tool-name">Dart</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">PHP</div>
+                <div class="tool-name">PHP</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">SQL</div>
+                <div class="tool-name">SQL</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="language">
+                <div class="tool-icon">C++</div>
+                <div class="tool-name">C++</div>
+                <div class="tool-cat-label">Language</div>
+            </div>
+
+            <!-- FRAMEWORKS -->
+            <div class="project-card tool-card card animate-in" data-category="framework">
+                <div class="tool-icon">Laravel</div>
+                <div class="tool-name">Laravel</div>
+                <div class="tool-cat-label">Framework</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="framework">
+                <div class="tool-icon">Flutter</div>
+                <div class="tool-name">Flutter</div>
+                <div class="tool-cat-label">Framework</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="framework">
+                <div class="tool-icon">Node.js</div>
+                <div class="tool-name">Node.js</div>
+                <div class="tool-cat-label">Framework</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="framework">
+                <div class="tool-icon">Tailwind</div>
+                <div class="tool-name">Tailwind CSS</div>
+                <div class="tool-cat-label">Framework</div>
+            </div>
+
+            <!-- DATABASES -->
+            <div class="project-card tool-card card animate-in" data-category="database">
+                <div class="tool-icon">Firebase</div>
+                <div class="tool-name">Firebase</div>
+                <div class="tool-cat-label">Database</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="database">
+                <div class="tool-icon">MySQL</div>
+                <div class="tool-name">MySQL</div>
+                <div class="tool-cat-label">Database</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="database">
+                <div class="tool-icon">MongoDB</div>
+                <div class="tool-name">MongoDB</div>
+                <div class="tool-cat-label">Database</div>
+            </div>
+
+            <!-- HARDWARE -->
+            <div class="project-card tool-card card animate-in" data-category="hardware">
+                <div class="tool-icon">Raspberry Pi</div>
+                <div class="tool-name">Raspberry Pi</div>
+                <div class="tool-cat-label">Hardware</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="hardware">
+                <div class="tool-icon">Arduino</div>
+                <div class="tool-name">Arduino</div>
+                <div class="tool-cat-label">Hardware</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="hardware">
+                <div class="tool-icon">ESP32</div>
+                <div class="tool-name">ESP32</div>
+                <div class="tool-cat-label">Hardware</div>
+            </div>
+
+            <!-- TOOLS -->
+            <div class="project-card tool-card card animate-in" data-category="tool">
+                <div class="tool-icon">Antigravity</div>
+                <div class="tool-name">Antigravity</div>
+                <div class="tool-cat-label">Tool</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="tool">
+                <div class="tool-icon">Git</div>
+                <div class="tool-name">Git & GitHub</div>
+                <div class="tool-cat-label">Tool</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="tool">
+                <div class="tool-icon">Arduino IDE</div>
+                <div class="tool-name">Arduino IDE</div>
+                <div class="tool-cat-label">Tool</div>
+            </div>
+            <div class="project-card tool-card card animate-in" data-category="tool">
+                <div class="tool-icon">VS Code</div>
+                <div class="tool-name">VS Code</div>
+                <div class="tool-cat-label">Tool</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-animate">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's discuss your next big idea.</h3>
+                <p>I am available for corporate roles, technical consulting, and freelance development. Drop a message
+                    below and I'll get back to you within 24 hours.</p>
+                <div class="email-box card">
+                    <span id="my-email">dev.gerale@gmail.com</span>
+                    <a href="mailto:dev.gerale@gmail.com" class="btn btn-outline"
+                        style="padding: 0.5rem 1.2rem; font-size: 0.9rem; text-decoration: none;">Email Me</a>
+                </div>
+                <div class="email-box card">
+                    <span id="my-facebook">facebook.com/aj.gerale.216738</span>
+                    <a href="https://facebook.com/aj.gerale.216738" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline"
+                        style="padding: 0.5rem 1.2rem; font-size: 0.9rem; text-decoration: none;">Visit Facebook</a>
+                </div>
+                <div class="email-box card">
+                    <span id="my-contact">09196154702</span>
+                    <a href="tel:09196154702" class="btn btn-outline"
+                        style="padding: 0.5rem 1.2rem; font-size: 0.9rem; text-decoration: none;">Call Now</a>
+                </div>
+                <div class="email-box card">
+                    <span id="my-github">github.com/devgerale-pixel</span>
+                    <a href="https://github.com/devgerale-pixel" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline"
+                        style="padding: 0.5rem 1.2rem; font-size: 0.9rem; text-decoration: none;">View GitHub</a>
+                </div>
+            </div>
+            <form id="contact-form" class="card" style="padding: 2.5rem;">
+                <div class="input-group">
+                    <input type="text" id="name" required placeholder="Full Name">
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" required placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <input type="text" id="subject" required placeholder="Subject">
+                </div>
+                <div class="input-group">
+                    <textarea id="message" rows="5" required placeholder="How can I help you?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; font-size: 1.1rem; padding: 1rem;">Send Message</button>
+                <p id="form-status"
+                    style="margin-top: 1.2rem; text-align: center; font-weight: 600; font-size: 0.95rem;"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aljerick Louise Gerale. Designed and developed with purpose.</p>
+    </footer>
+
+    <!-- UX Friendly Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header-img" id="modal-header-img">Project Visualization</div>
+            <div class="modal-body">
+                <h2 id="modal-title">Project Title</h2>
+                <div class="project-tags" id="modal-tags">
+                    <!-- Tags injected via JS -->
+                </div>
+                <p id="modal-desc">Project description goes here in detail...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Theme Toggle (Dark/Light) ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggleBtn.textContent = '☀️';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '☀️';
+            }
+        });
+
+        // --- 2. Mobile Drawer Navigation ---
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openNav() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeNav() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        hamburger.addEventListener('click', openNav);
+        closeMenu.addEventListener('click', closeNav);
+        overlay.addEventListener('click', closeNav);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // --- 3. Typing Effect ---
+        const textArray = ["Aljerick Louise Gerale"];
+        let charIndex = 0;
+        const typingTextElement = document.getElementById("typing-text");
+
+        function type() {
+            if (charIndex < textArray[0].length) {
+                typingTextElement.textContent += textArray[0].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 80);
+            }
+        }
+        setTimeout(type, 400);
+
+        // --- 4. Intersection Observer for Smooth Scroll Reveals & Counters ---
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    const counters = entry.target.querySelectorAll('.counter');
+                    if (counters.length > 0) {
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            // Ensure it only animates once
+                            if (counter.innerText === "0") {
+                                const updateCount = () => {
+                                    const count = +counter.innerText;
+                                    const inc = target / 30;
+                                    if (count < target) {
+                                        counter.innerText = Math.ceil(count + inc);
+                                        setTimeout(updateCount, 40);
+                                    } else {
+                                        counter.innerText = target;
+                                    }
+                                };
+                                updateCount();
+                            }
+                        });
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-animate').forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- 5. Interactive Project Filtering with Animations ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Active state styling
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    // Reset animations
+                    card.classList.remove('animate-in');
+
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hide');
+                        // Trigger reflow to restart animation
+                        void card.offsetWidth;
+                        card.classList.add('animate-in');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+
+        // --- 6. Advanced Project Modal Popups ---
+        const modal = document.getElementById("project-modal");
+        const closeBtnModal = document.querySelector(".close-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDesc = document.getElementById("modal-desc");
+        const modalTagsContainer = document.getElementById("modal-tags");
+        const modalHeaderImg = document.getElementById("modal-header-img");
+
+        window.openModal = function (title, category, tagsString, desc) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+
+            // Set header visual based on category
+            let headerText = "Project Overview";
+            if (category === 'web') headerText = "Web Application Architecture";
+            if (category === 'mobile') headerText = "Mobile App Interface";
+            if (category === 'iot') headerText = "IoT Hardware & Dashboard";
+            modalHeaderImg.textContent = headerText;
+
+            // Generate Tags dynamically
+            modalTagsContainer.innerHTML = '';
+            const tagsArray = tagsString.split(',');
+            tagsArray.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.textContent = tag.trim();
+                modalTagsContainer.appendChild(span);
+            });
+
+            modal.style.display = "flex";
+            document.body.style.overflow = 'hidden'; // Stop background scroll
+        }
+
+        closeBtnModal.addEventListener('click', () => {
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // --- 7. Copy Email UX Interaction ---
+        const copyBtn = document.getElementById('copy-btn');
+        const emailText = document.getElementById('my-email').textContent;
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailText).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied to Clipboard! ✓';
+                copyBtn.style.background = 'var(--primary)';
+                copyBtn.style.color = 'white';
+                copyBtn.style.borderColor = 'transparent';
+
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.background = 'transparent';
+                    copyBtn.style.color = 'var(--text-main)';
+                    copyBtn.style.borderColor = 'var(--border)';
+                }, 2500);
+            });
+        });
+
+        // --- 8. Contact Form Handling ---
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                formStatus.textContent = "Please ensure all fields are filled out.";
+                formStatus.style.color = "#ef4444"; // red
+                return;
+            }
+
+            const myEmail = document.getElementById('my-email').textContent;
+            const mailtoLink = `mailto:${myEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+
+            window.location.href = mailtoLink;
+
+            formStatus.textContent = "Opening your default email application... ✓";
+            formStatus.style.color = "var(--primary)";
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>
